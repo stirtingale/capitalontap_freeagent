@@ -39,7 +39,7 @@
 	  		$output .= $data[0].","; // date
 	  		$amount = abs($data[2]) * -1; // invert
 	  		$output .= $amount.","; // amount
-	  		$output .= $data[1]\n; // description
+	  		$output .= $data[1]."\n"; // description
 			fwrite($outputfile_location, $output);
 	  		$output .= "<br>";
 	  		$complete_output .= $output;
