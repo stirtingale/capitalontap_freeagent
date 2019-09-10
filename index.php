@@ -40,9 +40,9 @@
 	  		$amount = abs($data[2]) * -1; // invert
 	  		$output .= $amount.","; // amount
 	  		$output .= $data[1]; // description
+			fwrite($outputfile_location, $output);
 	  		$output .= "<br>";
 	  		$complete_output .= $output;
-			fwrite($outputfile_location, $output);
 		}
 	  }
 	  fclose($handle);
