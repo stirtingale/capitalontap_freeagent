@@ -37,7 +37,11 @@
 	  	$output = null; // reset
 	  	if($counter!=1){
 	  		$output .= $data[0].","; // date
-	  		$amount = abs($data[2]) * -1; // invert
+	  		if($data[2]<0){
+	  			$amount = abs($data[2]) * 1; // invert
+	  		} else {
+	  			$amount = abs($data[2]) * -1; // invert
+	  		}
 	  		$output .= $amount.","; // amount
 	  		$output .= $data[1]."\n"; // description
 			fwrite($outputfile_location, $output);
