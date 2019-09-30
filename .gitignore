@@ -1,4 +1,3 @@
 # IGNORE CSV INPUTS FOR GITHUB
 
-input.csv
-output.csv
+uploads/*

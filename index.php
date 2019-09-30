@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<meta charset="UTF-8">
 	<title>Convert Captial on Tap to FreeAgent</title>
+	<?php $cachebuster = time(); ?>
+	<link href="dropzone.css?<?php echo $cachebuster ?>" type="text/css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
+	<script src="dropzone.js?<?php echo $cachebuster ?>"></script>
+
 	<style>
 		body {
 			padding:3.6rem;
+			font-family: 'Roboto', sans-serif;
+			font-weight:500;
 		}
 		p {
-			margin:3.6rem 0;
+			margin:0.9rem 0 3.6rem 0;
 		}
 		code {
 			padding:1.8rem;
@@ -18,52 +26,15 @@
 			max-width: 100%;
 		}
 	</style>
+
 </head>
 <body>
 
+	<h1>CapitalOnTap to FreeAgent</h1>
 
-	<p><strike>Lazy</strike> Simple script to convert input.csv (from Capital on Tap) to a FreeAgent friendly CSV for import.</p>
-	<?php 
-	$outputfile_location = fopen("output.csv", "w") or die("Unable to open file!");
-	?>
-	<code>
-	<?php 
-	$row = 1;
-	$counter = 0;
-	$complete_output = null;
-	if (($handle = fopen("input.csv", "r")) !== FALSE) {
-	  while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-	  	$counter++;
-	  	$output = null; // reset
-	  	if($counter!=1){
-	  		$output .= $data[0].","; // date
-	  		if($data[2]<0){
-	  			$amount = abs($data[2]) * 1; // invert
-	  		} else {
-	  			$amount = abs($data[2]) * -1; // invert
-	  		}
-	  		$output .= $amount.","; // amount
-	  		$output .= $data[1]."\n"; // description
-			fwrite($outputfile_location, $output);
-	  		$output .= "<br>";
-	  		$complete_output .= $output;
-		}
-	  }
-	  fclose($handle);
-	}
+	<p>A <strike>very lazy</strike> simple script to convert CapitalOnTap CSV outputs to a FreeAgent friendly CSVs for import.</p>
 
-	echo $complete_output;
-	?>
-	</code>
-	
-	<p>
-		<?php
-		fclose($outputfile_location);
-		$cachebuster = time();
-		 ?>		
-		 <a href="output.csv?<?php echo $cachebuster ?>" download>Download output.csv</a>
-
-	</p>
+	<form action="upload.php" class="dropzone"></form>
 
 </body>
 </html>
