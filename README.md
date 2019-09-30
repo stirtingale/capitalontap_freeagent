@@ -1,4 +1,4 @@
-# CapitalOnTap CSV output to FreeAgent friendly CSV
+# Convert CapitalOnTap CSV to FreeAgent friendly CSV
 
 A super simple PHP script to convert CSV from CapitalOnTap to a FreeAgent friendly CSV ready for import
 
