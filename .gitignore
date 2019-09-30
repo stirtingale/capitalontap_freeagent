@@ -1,4 +1,3 @@
 # IGNORE CSV INPUTS FOR GITHUB
-
 uploads/*
-!./uploads/index.php
+!uploads/index.php
